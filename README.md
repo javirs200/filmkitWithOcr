@@ -9,7 +9,7 @@ Browser-based preset manager and RAW converter for Fujifilm X-series cameras for
 
 ## Features
 
-> Following an [issue](https://github.com/eggricesoy/filmkit/issues/12) on original repo **ALPHA** support test added for Fuji X-T50 ( my gear )
+> Following an [issue](https://github.com/eggricesoy/filmkit/issues/12) on original repo **ALPHA** support test added for Fuji X-T50 ( my gear ) , data stored in [this folder](/xt50Capture/)
 
 Just like [Fujifilm X RAW STUDIO](https://www.fujifilm-x.com/global/products/software/x-raw-studio/), FilmKit uses WebUSB to connect directly to your camera, your camera's own image processor handles the conversion. FilmKit is a static client-side app, hosted on Github Pages.
 
