@@ -3,21 +3,9 @@
 
 ## This repo is a fork of a fork , take with caution
 
-
+Test here https://javirs200.github.io/filmkitWithOcr/
 
 Browser-based preset manager and RAW converter for Fujifilm X-series cameras for desktop and mobile.
-
-<p align="center">
-  <img src="screenshots/desktop.png" width="80%"/>
-  <br>
-  Desktop
-  <br><br>
-  <img src="screenshots/mobile-preview.jpg" width="20%"/>
-  <img src="screenshots/mobile-presets.jpg" width="20%"/>
-  <img src="screenshots/mobile-controls.jpg" width="20%"/>
-  <br>
-  Android
-</p>
 
 ## Features
 
