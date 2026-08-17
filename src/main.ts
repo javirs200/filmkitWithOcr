@@ -1,3 +1,4 @@
+import './styles.css'
 import { FujiCamera, CancelledError, type RawProp } from './ptp/session.ts'
 import { USBTransport } from './ptp/transport.ts'
 import { RouterCamera, detectRouterBaseURL } from './router-camera.ts'
