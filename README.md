@@ -1,10 +1,9 @@
-<p align="center">
-  <img src="public/favicon.svg" width="256"/>
-  <br><br>
-  <strong><a href="https://filmkit.eggrice.soy">filmkit.eggrice.soy</a></strong>
-</p>
 
-# FilmKit
+# FilmKit With OCR
+
+## This repo is a fork of a fork , take with caution
+
+
 
 Browser-based preset manager and RAW converter for Fujifilm X-series cameras for desktop and mobile.
 
@@ -20,11 +19,9 @@ Browser-based preset manager and RAW converter for Fujifilm X-series cameras for
   Android
 </p>
 
-_This is author's cat. Shoutout to [Fuji X Weekly](https://fujixweekly.com/) for awesome presets!_
-
 ## Features
 
-> Note that the app is in **BETA**. It's currently tested on **X100VI** only. It likely works with other X-series cameras that support Fujifilm's RAW conversion protocol (X-T5, X-H2, X-T30, etc.), but this has not been verified. If you have a different camera and want to help, see [Supporting New Cameras](#supporting-new-cameras) below.
+> Following an [issue](https://github.com/eggricesoy/filmkit/issues/12) on original repo **ALPHA** support test added for Fuji X-T50 ( my gear )
 
 Just like [Fujifilm X RAW STUDIO](https://www.fujifilm-x.com/global/products/software/x-raw-studio/), FilmKit uses WebUSB to connect directly to your camera, your camera's own image processor handles the conversion. FilmKit is a static client-side app, hosted on Github Pages.
 
@@ -40,12 +37,6 @@ Just like [Fujifilm X RAW STUDIO](https://www.fujifilm-x.com/global/products/sof
 ## Requirements
 
 **Browser that supports WebUSB**, this includes Chromium-based browswer like Google Chrome on desktop and Android.
-
-Appropriate udev rule required if the browser is running in Flatpak, ex:
-
-```
-SUBSYSTEM=="usb", ATTR{idVendor}=="04cb", MODE="0666"
-```
 
 ## How It Works
 
@@ -67,8 +58,6 @@ FilmKit's protocol implementation was built with the following reference materia
 The camera's native d185 profile format (625 bytes) uses different field indices and encoding from the format in RAF files. FilmKit uses a patch-based approach: copy the base profile byte-for-byte, only overwrite fields the user changed, to preserve EXIF sentinel values.
 
 ## Supporting New Cameras
-
-FilmKit has only been tested on the **X100VI**. If you have a different Fuji X-series camera and want to help expand support, you can capture USB traffic with Wireshark:
 
 ### How to capture
 
@@ -92,23 +81,3 @@ Open an issue on GitHub with:
 - The parameter values you used (so we can correlate bytes to settings)
 
 Additional captures may be required with various property values (ex. for ranged-based value, typically preset save or profile read of min/max values are good enough, but we may face another case of HighIsoNR weirdness).
-
-## Contributing
-
-This project does **not** accept any pull requests.
-
-**What is welcome:**
-- Bug reports via [Issues](https://github.com/eggricesoy/filmkit/issues)
-- Feature requests via [Issues](https://github.com/eggricesoy/filmkit/issues)
-- Camera compatibility reports with Wireshark captures (see [Supporting New Cameras](#supporting-new-cameras))
-
-### Bug Reports
-
-When filing a bug report, please include:
-1. Your camera model and firmware version
-2. Steps to reproduce the issue
-3. The **debug log** - scroll down to the Debug section at the bottom of the right sidebar, click **Copy Log**, and paste it into the issue
-
----
-
-Made with &#9829; by [eggricesoy](https://eggrice.soy) · [@eggricesoy](https://x.com/eggricesoy)
