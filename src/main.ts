@@ -1,4 +1,5 @@
 import './styles.css'
+import Tesseract from 'tesseract.js'
 import { FujiCamera, CancelledError, type RawProp } from './ptp/session.ts'
 import { USBTransport } from './ptp/transport.ts'
 import { RouterCamera, detectRouterBaseURL } from './router-camera.ts'
@@ -720,14 +721,28 @@ populateSelect(smoothSkinSelect, SmoothSkinLabels)
 // Slider wiring
 // ==========================================================================
 
+function formatExposureFraction(thirds: number): string {
+  const raw = Number.isFinite(thirds) ? Math.round(thirds) : 0
+  const sign = raw > 0 ? '+' : raw < 0 ? '-' : ''
+  const abs = Math.abs(raw)
+
+  if (abs === 0) return '0'
+
+  const whole = Math.floor(abs / 3)
+  const remainder = abs % 3
+
+  if (remainder === 0) return `${sign}${whole}`
+  if (whole === 0) return `${sign}${remainder}/3`
+  return `${sign}${whole} ${remainder}/3`
+}
+
 for (const [key, s] of Object.entries(sliders)) {
   s.input.addEventListener('input', () => {
     const val = parseFloat(s.input.value)
     if (key === 'wbColorTemp') {
       s.display.textContent = val + 'K'
     } else if (key === 'exposure') {
-      const ev = val / 3
-      s.display.textContent = (ev >= 0 ? '+' : '') + ev.toFixed(2)
+      s.display.textContent = formatExposureFraction(val)
     } else {
       s.display.textContent = (val >= 0 ? '+' : '') + val.toString()
     }
@@ -989,6 +1004,15 @@ function makePresetActions(): HTMLElement {
     pasteBtn.textContent = 'From Text'
     pasteBtn.addEventListener('click', (ev) => { ev.stopPropagation(); dropdown.remove(); showPasteOverlay() })
     dropdown.appendChild(pasteBtn)
+
+    const ocrBtn = document.createElement('button')
+    ocrBtn.textContent = 'From Image (OCR) *Beta'
+    ocrBtn.addEventListener('click', async (ev) => {
+      ev.stopPropagation()
+      dropdown.remove()
+      await importFromOcrImage()
+    })
+    dropdown.appendChild(ocrBtn)
 
     importAnchor.appendChild(dropdown)
 
@@ -1427,10 +1451,10 @@ async function importFromFile() {
 // Paste import overlay
 // ==========================================================================
 
-function showPasteOverlay() {
-  pasteNameInput.value = ''
-  pasteTextarea.value = ''
-  pasteImportBtn.disabled = true
+function showPasteOverlay(initialName = '', initialText = '') {
+  pasteNameInput.value = initialName
+  pasteTextarea.value = initialText
+  pasteImportBtn.disabled = !pasteNameInput.value.trim() || !pasteTextarea.value.trim()
   pasteOverlay.classList.add('visible')
   pasteNameInput.focus()
 }
@@ -1474,6 +1498,49 @@ function buildParseSummary(result: ReturnType<typeof parseTextPreset>): string {
 /** Escape HTML special characters */
 function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+async function importFromOcrImage() {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = 'image/*'
+  input.multiple = false
+
+  input.addEventListener('change', async () => {
+    const file = input.files?.[0]
+    if (!file) return
+
+    const nameHint = file.name.replace(/\.[^/.]+$/, '') || 'OCR Preset'
+    showLoading(`OCR reading ${file.name}...`)
+
+    try {
+      const result = await Tesseract.recognize(file, 'eng', {
+        logger: (msg) => {
+          if (msg.status === 'recognizing text' && typeof msg.progress === 'number') {
+            const pct = Math.round(msg.progress * 100)
+            loadingText.textContent = `OCR reading ${file.name}... ${pct}%`
+          }
+        },
+      })
+
+      const extracted = result.data.text.trim()
+      if (!extracted) {
+        await showDialog('OCR Empty', 'No text was detected in the image.', [{ label: 'OK', primary: true }])
+        return
+      }
+
+      showPasteOverlay(nameHint, extracted)
+      log(`OCR extracted ${extracted.length} characters from "${file.name}"`)
+      log(`Debug log -- extracted data :${extracted}`)
+    } catch (error) {
+      console.error(error)
+      await showDialog('OCR Failed', 'The image could not be processed with OCR.', [{ label: 'OK', primary: true }])
+    } finally {
+      hideLoading()
+    }
+  })
+
+  input.click()
 }
 
 async function handlePasteImport() {
