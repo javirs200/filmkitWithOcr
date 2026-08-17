@@ -9,19 +9,6 @@
   <title>FilmKit</title>
   <meta name="description" content="Browser-based RAW converter and preset manager for Fujifilm X-series cameras. Uses WebUSB to connect directly to your camera — no install, no server.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="FilmKit">
-  <meta property="og:description" content="Browser-based RAW converter and preset manager for Fujifilm X-series cameras.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://filmkit.eggrice.soy">
-  <meta property="og:image" content="https://filmkit.eggrice.soy/og-image.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://filmkit.eggrice.soy/og-image.png">
-  <meta name="twitter:title" content="FilmKit">
-  <meta name="twitter:description" content="Browser-based RAW converter and preset manager for Fujifilm X-series cameras.">
-  <meta name="twitter:site" content="@eggricesoy">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1350,14 +1337,7 @@
          LEFT SIDEBAR — connection, file, presets
          ============================================================ -->
     <div class="sidebar sidebar-left">
-      <div class="sidebar-header sidebar-header-brand">
-        <div class="brand">
-          <img src="/logo.svg" alt="FilmKit" class="brand-logo">
-          <h1>FilmKit</h1>
-          <span class="brand-version" id="brand-version"></span>
-        </div>
-      </div>
-
+  
       <div class="warning-box" id="browser-warning" hidden>
         WebUSB not supported. Use Chrome, Edge, or Brave.
       </div>
@@ -1401,10 +1381,6 @@
 
       </div>
 
-      <footer class="app-footer">
-        <div>Made with &#9829; by <a href="https://eggrice.soy" target="_blank" rel="noopener">eggrice.soy</a> · <a href="https://x.com/eggricesoy" target="_blank" rel="noopener">@eggricesoy</a></div>
-        <div><a href="https://github.com/eggricesoy/filmkit" target="_blank" rel="noopener">Source on GitHub</a></div>
-      </footer>
     </div>
 
     <!-- ============================================================
@@ -1420,7 +1396,7 @@
 
       <div class="canvas-empty" id="canvas-empty">
         <em class="icon">&#9649;</em>
-        <p id="canvas-empty-text">Connect to camera to begin</p>
+        <p id="canvas-empty-text">Camera not connected</p>
       </div>
 
       <div id="result-panel">
@@ -1622,7 +1598,7 @@
       <!-- Render controls — anchored at bottom of right sidebar -->
       <div class="sidebar-bottom-bar">
         <label class="toggle-row">
-          <input type="checkbox" id="auto-render" checked>
+          <input type="checkbox" id="auto-render">
           <span class="toggle-label">Auto-render</span>
         </label>
         <button id="btn-render" class="action" style="margin-top:0.4rem" hidden>Render</button>
