@@ -2218,9 +2218,6 @@ autoRenderCheckbox.addEventListener('change', () => {
 // Init
 // ==========================================================================
 
-declare const __APP_VERSION__: string
-$('brand-version').textContent = `v${__APP_VERSION__}`
-
 updateUI()
 renderPresetList()
 updatePresetBar()
