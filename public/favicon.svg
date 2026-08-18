@@ -1,43 +1,83 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="512" height="512" rx="80" fill="#1c1c1e"/>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Camera settings and OCR app icon">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071821"/>
+      <stop offset="100%" stop-color="#0c1d2a"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14354d"/>
+      <stop offset="100%" stop-color="#102538"/>
+    </linearGradient>
+    <radialGradient id="lensGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#2a5d8a"/>
+      <stop offset="45%" stop-color="#10273d"/>
+      <stop offset="100%" stop-color="#061821"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.32"/>
+    </filter>
+  </defs>
 
-  <g transform="translate(256, 256) scale(2.2) translate(-92.5, 0)">
-    <defs>
-      <clipPath id="halfcan">
-        <rect x="0" y="-90" width="60" height="180"/>
-      </clipPath>
-      <clipPath id="filmclip">
-        <polygon points="48,-70 185,-70 145,70 48,70"/>
-      </clipPath>
-      <mask id="film-mask">
-        <rect x="40" y="-80" width="160" height="160" fill="white"/>
-        <rect x="57" y="-65" width="10" height="7" rx="2" fill="black"/>
-        <rect x="85" y="-65" width="10" height="7" rx="2" fill="black"/>
-        <rect x="113" y="-65" width="10" height="7" rx="2" fill="black"/>
-        <rect x="141" y="-65" width="10" height="7" rx="2" fill="black"/>
-        <rect x="169" y="-65" width="10" height="7" rx="2" fill="black"/>
-        <rect x="57" y="58" width="10" height="7" rx="2" fill="black"/>
-        <rect x="85" y="58" width="10" height="7" rx="2" fill="black"/>
-        <rect x="113" y="58" width="10" height="7" rx="2" fill="black"/>
-        <rect x="141" y="58" width="10" height="7" rx="2" fill="black"/>
-        <rect x="169" y="58" width="10" height="7" rx="2" fill="black"/>
-        <rect x="40" y="-53" width="160" height="3" fill="black"/>
-        <rect x="40" y="50" width="160" height="3" fill="black"/>
-      </mask>
-    </defs>
+  <rect width="512" height="512" rx="90" fill="url(#bgGrad)"/>
 
-    <g clip-path="url(#filmclip)" mask="url(#film-mask)" style="shape-rendering: crispEdges">
-      <rect x="48" y="-70" width="28" height="140" fill="#5DBB46"/>
-      <rect x="76" y="-70" width="28" height="140" fill="#FCB827"/>
-      <rect x="104" y="-70" width="28" height="140" fill="#F5821F"/>
-      <rect x="132" y="-70" width="28" height="140" fill="#E03A3E"/>
-      <rect x="160" y="-70" width="28" height="140" fill="#009DDC"/>
+  <g filter="url(#shadow)">
+    <rect x="106" y="146" width="300" height="220" rx="42" fill="url(#bodyGrad)" stroke="#214766" stroke-width="4"/>
+
+    <rect x="156" y="112" width="200" height="52" rx="18" fill="#102538" stroke="#214766" stroke-width="4"/>
+    <circle cx="200" cy="138" r="9" fill="#7cb7ff"/>
+    <circle cx="234" cy="138" r="9" fill="#8ad7c2"/>
+    <circle cx="268" cy="138" r="9" fill="#e09a9a"/>
+    <rect x="300" y="130" width="38" height="16" rx="8" fill="#7cb7ff" opacity="0.9"/>
+
+    <g>
+      <circle cx="256" cy="258" r="104" fill="#0b1e2f" stroke="#214766" stroke-width="5"/>
+      <circle cx="256" cy="258" r="78" fill="#102538" stroke="#7cb7ff" stroke-width="8"/>
+      <circle cx="256" cy="258" r="46" fill="url(#lensGrad)" stroke="#d7e9fb" stroke-opacity="0.55" stroke-width="4"/>
+      <circle cx="256" cy="258" r="22" fill="#071821" stroke="#7cb7ff" stroke-opacity="0.7" stroke-width="3"/>
+
+      <g stroke="#7cb7ff" stroke-width="7" stroke-linecap="round" opacity="0.8">
+        <path d="M256 149 L256 164"/>
+        <path d="M256 352 L256 367"/>
+        <path d="M149 258 L164 258"/>
+        <path d="M348 258 L363 258"/>
+        <path d="M184 187 L194 197"/>
+        <path d="M328 329 L318 319"/>
+        <path d="M184 329 L194 319"/>
+        <path d="M328 187 L318 197"/>
+      </g>
+
+      <g fill="#8ad7c2" opacity="0.9">
+        <circle cx="256" cy="208" r="6"/>
+        <circle cx="300" cy="258" r="6"/>
+        <circle cx="256" cy="308" r="6"/>
+        <circle cx="212" cy="258" r="6"/>
+      </g>
+
+      <g opacity="0.9">
+        <path d="M228 290 L248 290" stroke="#edf7ff" stroke-width="7" stroke-linecap="round"/>
+        <path d="M264 290 L284 290" stroke="#edf7ff" stroke-width="7" stroke-linecap="round"/>
+        <path d="M256 236 L256 259" stroke="#edf7ff" stroke-width="7" stroke-linecap="round"/>
+      </g>
     </g>
 
-    <g clip-path="url(#halfcan)">
-      <ellipse cx="0" cy="70" rx="50" ry="12" fill="#2a2a2a"/>
-      <rect x="-50" y="-70" width="100" height="140" fill="#2a2a2a"/>
-      <ellipse cx="0" cy="-70" rx="50" ry="12" fill="#404040"/>
+    <g>
+      <rect x="140" y="182" width="92" height="14" rx="7" fill="#7cb7ff"/>
+      <rect x="140" y="204" width="130" height="11" rx="5.5" fill="#9ab8d2" opacity="0.8"/>
+      <rect x="140" y="223" width="112" height="11" rx="5.5" fill="#8ad7c2" opacity="0.9"/>
+      <rect x="140" y="242" width="82" height="11" rx="5.5" fill="#e09a9a" opacity="0.85"/>
+    </g>
+
+    <g>
+      <rect x="336" y="183" width="44" height="12" rx="6" fill="#7cb7ff" opacity="0.9"/>
+      <rect x="336" y="202" width="56" height="12" rx="6" fill="#8ad7c2" opacity="0.85"/>
+      <rect x="336" y="221" width="48" height="12" rx="6" fill="#e09a9a" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(0 6)">
+      <rect x="126" y="328" width="64" height="18" rx="9" fill="#102538" stroke="#214766" stroke-width="2"/>
+      <rect x="322" y="328" width="64" height="18" rx="9" fill="#102538" stroke="#214766" stroke-width="2"/>
+      <circle cx="158" cy="337" r="6" fill="#8ad7c2"/>
+      <circle cx="354" cy="337" r="6" fill="#e09a9a"/>
     </g>
   </g>
 </svg>

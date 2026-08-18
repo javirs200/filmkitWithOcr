@@ -1,6 +1,6 @@
 {
-  "name": "FilmKit",
-  "short_name": "FilmKit",
+  "name": "FilmKitWithOCR",
+  "short_name": "FilmKitOCR",
   "description": "Browser-based preset manager and RAW converter for Fujifilm X-series cameras.",
   "start_url": "/",
   "display": "standalone",

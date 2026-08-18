@@ -1,4 +1,4 @@
-# FilmKit quick reference
+# FilmKit OCR quick reference
 
 ## Why WebUSB
 
