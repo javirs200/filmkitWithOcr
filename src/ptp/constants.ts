@@ -148,7 +148,7 @@ export const FUJI_PRODUCT_IDS = [
   0x02E5, // X100V
   0x02E7, // X-T4
   0x0305, // X100VI
-  0x0306, // x-T50 ( pendintg to search in device manager , picked for original repo issue 12  )
+  0x0306, // x-T50 ( picked for original repo issue 12 ) , Confirmed that works con X-T50 Firmware 1.32
 ]
 
 // ==========================================================================

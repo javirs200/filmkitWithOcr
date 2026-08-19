@@ -2366,8 +2366,8 @@ log('FilmKit ready. Connect your camera to begin.')
 const BETA_KEY = 'filmkit:beta-dismissed'
 if (!localStorage.getItem(BETA_KEY)) {
   showDialog(
-    'Alpha',
-    'FilmKitWithOCR is in the alpha stage and is currently being tested only on the <b>X-T50</b>.'
+    'Beta',
+    'FilmKitWithOCR is in the Beta stage and is currently tested only on the <b>X-T50</b>.'
     + 'It should work with other Fujifilm X-Trans cameras, but this has not been verified.<br><br>'
     + 'This app is a fork of FilmKit that adds OCR support for importing screenshots of recipe cards.',
     [{ label: 'Got it', primary: true }],
